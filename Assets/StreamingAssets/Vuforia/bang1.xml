@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="COLT" size="1.000000 1.620773" />
+    <ImageTarget name="viataasfdads" size="1.000000 0.567294" />
+    <ImageTarget name="BULLET_LIFE_5" size="1.000000 1.045894" />
+    <ImageTarget name="BULLET_LIFE_4" size="1.000000 0.820048" />
+    <ImageTarget name="BULLET_LIFE_3" size="1.000000 0.910628" />
+    <ImageTarget name="BULLET_LIFE_2" size="1.000000 0.867150" />
+    <ImageTarget name="BULLET_LIFE_1" size="1.000000 0.981884" />
+    <ImageTarget name="BACK_CHAR" size="1.000000 1.545894" />
+    <ImageTarget name="LIFE" size="1.000000 0.590090" />
+    <ImageTarget name="SCHOFIELD" size="1.000000 1.611111" />
+    <ImageTarget name="REMINGTON" size="1.000000 1.586457" />
+    <ImageTarget name="BUTOI" size="1.000000 1.562166" />
+    <ImageTarget name="DINAMITA" size="1.000000 1.558600" />
+    <ImageTarget name="REV_CARABINE" size="1.000000 1.584039" />
+    <ImageTarget name="WINCHESTER" size="1.000000 1.587666" />
+    <ImageTarget name="LUNETA" size="1.000000 1.532695" />
+    <ImageTarget name="ADJUNCT" size="1.000000 1.575385" />
+    <ImageTarget name="SERIF" size="1.000000 1.575410" />
+    <ImageTarget name="PANICA" size="1.000000 1.525998" />
+    <ImageTarget name="DILIGENTA" size="1.000000 1.588164" />
+    <ImageTarget name="WELLS_FARGO" size="1.000000 1.548309" />
+    <ImageTarget name="SALON" size="1.000000 1.542926" />
+    <ImageTarget name="BERE" size="1.000000 1.571256" />
+    <ImageTarget name="BANG" size="1.000000 1.565217" />
+    <ImageTarget name="RATAT" size="1.000000 1.588164" />
+    <ImageTarget name="BANDIT" size="1.000000 1.566425" />
+    <ImageTarget name="RENEGAT" size="1.000000 1.588164" />
+    <ImageTarget name="MAGAZIN_UNIVERSAL" size="1.000000 1.557436" />
+    <ImageTarget name="MUSTANG" size="1.000000 1.590580" />
+    <ImageTarget name="INCHISOARE" size="1.000000 1.584039" />
+    <ImageTarget name="VOLCANIC" size="1.000000 1.585248" />
+  </Tracking>
+</QCARConfig>
