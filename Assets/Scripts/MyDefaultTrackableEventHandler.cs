@@ -54,16 +54,23 @@ public class MyDefaultTrackableEventHandler : MonoBehaviour
     GameObject scanningCharacterMenuPanel;
 
     //public Player Player { get; private set; }
-    public PlayerLives _playerLives = new PlayerLives();
     public Beer _beer = new Beer();
     public Saloon _saloon = new Saloon();
     public Bang _bang = new Bang();
     public Characters _characters = new Characters();
     public BackCard _backCard = new BackCard();
-    public Bullets _bullets = new Bullets();
+    //public Bullets _bullets = new Bullets();
     public Weapons _weaapons = new Weapons();
     public Luneta _luneta = new Luneta();
     public Mustang _mustang = new Mustang();
+    public Indieni _indieni = new Indieni();
+
+    // characters
+    public Rose _rose = new Rose();
+    public Paul _paul = new Paul();
+    public Bart _bart = new Bart();
+    public Gringo _gringo = new Gringo();
+    public Willy _willy = new Willy();
 
     private static string unassignedCharacter = "N/A";
     public static string scannedCharacter = unassignedCharacter; // I will send this variable to ScanManager so I can set it as a custom property
@@ -204,6 +211,24 @@ public class MyDefaultTrackableEventHandler : MonoBehaviour
             displayScanningCharacterMenuPanel();
 
             onCardsFoundFunctions();
+
+            //print("HERE!!!!!!!!!!!!!!1111 " + PhotonNetwork.LocalPlayer.NickName);
+
+            //onCardsFoundFunctions_anytime();
+
+            //bool hasTurn = false;
+
+            //// if it's not the player's turn, block the actions, only see the object - nu stiu daca vreau asta neaparat
+            //if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("Turn")) {
+            //    hasTurn = (bool)PhotonNetwork.LocalPlayer.CustomProperties["Turn"];
+            //}
+
+            //if (hasTurn) {
+            //    print("[MyDefaultTrackableEventHandler] My turn!");
+            //    onCardsFoundFunctions_limited();  
+            //} else {
+            //    print("[MyDefaultTrackableEventHandler] Not your turn yet, you can only see the models...");
+            //}
         }
 
         if (OnTargetFound != null) {
@@ -257,6 +282,39 @@ public class MyDefaultTrackableEventHandler : MonoBehaviour
         }
     }
 
+    //public void onCardsFoundFunctions_limited()
+    //{
+    //    // ------------- deal with beer card --------------
+    //    _beer.gainLifeWithBeerCard(mTrackableBehaviour);
+
+    //    // ------------- deal with saloon card ---------------
+    //    _saloon.gainLifeWithSaloonCard(mTrackableBehaviour);
+
+    //    // ------------- deal with BANG card --------------
+    //    _bang.loseLifeWithBangCard(mTrackableBehaviour);
+
+    //    // ------------- deal with weapons cards --------------
+    //    currentRange = _weaapons.weaponFoundChecks(currentRange, mTrackableBehaviour);
+
+    //    // ------------- deal with luneta card --------------
+    //    _luneta.LunetaFound(mTrackableBehaviour);
+
+    //    // ------------- deal with mustang card --------------
+    //    _mustang.MustangFound(mTrackableBehaviour);
+    //}
+
+    //public void onCardsFoundFunctions_anytime()
+    //{
+    //    // ------------- deal with characters cards ---------------
+    //    scannedCharacter = _characters.characterFoundChecks(scannedCharacter, mTrackableBehaviour);
+
+    //    // ------------- deal with the back card ---------------
+    //    _backCard.backCharacterCardFound(mTrackableBehaviour);
+
+    //    // ------------- deal with bullets (lives) -------------
+    //    //commonCounter = _bullets.readPlayerLivesFromBoard(commonCounter, mTrackableBehaviour);
+    //}
+
     public void onCardsFoundFunctions()
     {
         // ------------- deal with characters cards ---------------
@@ -266,7 +324,7 @@ public class MyDefaultTrackableEventHandler : MonoBehaviour
         _backCard.backCharacterCardFound(mTrackableBehaviour);
 
         // ------------- deal with bullets (lives) -------------
-        commonCounter = _bullets.readPlayerLivesFromBoard(commonCounter, mTrackableBehaviour);
+        //commonCounter = _bullets.readPlayerLivesFromBoard(commonCounter, mTrackableBehaviour);
 
         // ------------- deal with beer card --------------
         _beer.gainLifeWithBeerCard(mTrackableBehaviour);
@@ -285,6 +343,16 @@ public class MyDefaultTrackableEventHandler : MonoBehaviour
 
         // ------------- deal with mustang card --------------
         _mustang.MustangFound(mTrackableBehaviour);
+
+        // ------------- deal with indieni card -------------
+        _indieni.play_indieni_card(mTrackableBehaviour);
+
+        // ------------- deal with special character cards -------------
+        _rose.RoseFound(mTrackableBehaviour);
+        _paul.PaulFound(mTrackableBehaviour);
+        _bart.BartFound(mTrackableBehaviour);
+        _gringo.GringoFound(mTrackableBehaviour);
+        _willy.WillyFound(mTrackableBehaviour);
     }
 
     public void onCardsLostFunctions()

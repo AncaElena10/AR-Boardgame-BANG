@@ -19,6 +19,8 @@ public class PlayerTurn : MonoBehaviourPunCallbacks
     List<int> PlayerActorIds_list;
     List<int> PlayerActorIdsAux_list;
 
+    private PlayerListing _playerListing = new PlayerListing();
+
     bool passTurn = false;
 
     //PlayerListingsMenu pl;
@@ -34,7 +36,7 @@ public class PlayerTurn : MonoBehaviourPunCallbacks
 
     public void Start()
     {
-        print("Hello from PlayerTurn Start function!");
+        //print("Hello from PlayerTurn Start function!");
         //pl = new PlayerListingsMenu();
         //ce = new CommonElements();
 
@@ -79,7 +81,7 @@ public class PlayerTurn : MonoBehaviourPunCallbacks
     //[PunRPC]
     public void EndPlayerTurn()
     {
-        print("Player turn ended!");
+        print("[PlayerTurn] Player turn has ended!");
 
         PassTurn();
     }
@@ -87,6 +89,28 @@ public class PlayerTurn : MonoBehaviourPunCallbacks
     public void OnClick_Button()
     {
         EndPlayerTurn();
+
+        // remove the attacked players from the array [PlayerListing] - TODO mai verifica asta
+        _playerListing.AttackedPlayersList().Clear();
+
+        // set PlayerToAttack to ""
+        // set IndieniPlayed to false
+        setPlayerToAttackToEmpty();
+        setIndieniPlayedToFalse();
+    }
+
+    public void setIndieniPlayedToFalse()
+    {
+        PunHashtable _indieniCustomProperty = new PunHashtable();
+        _indieniCustomProperty["IndieniPlayed"] = false;
+        PhotonNetwork.CurrentRoom.SetCustomProperties(_indieniCustomProperty);
+    }
+
+    public void setPlayerToAttackToEmpty()
+    {
+        PunHashtable _playerToAttackCustomProperty = new PunHashtable();
+        _playerToAttackCustomProperty["PlayerToAttack"] = "";
+        PhotonNetwork.CurrentRoom.SetCustomProperties(_playerToAttackCustomProperty);
     }
 
     //public bool SetCustomPropertiesSafe(Room room, string key, object newValue, WebFlags webFlags = null)
@@ -242,7 +266,13 @@ public class PlayerTurn : MonoBehaviourPunCallbacks
     {
         //base.OnRoomPropertiesUpdate(propertiesThatChanged);
         if (propertiesThatChanged.ContainsKey("PlayerActorIds") || propertiesThatChanged.ContainsKey("PlayerActorIdsAux")) {
-            print("Room `PlayerActorIds`/`PlayerActorIdsAux` custom property changed! From Player Turn.");
+            print("[PlayerTurn] Room PlayerActorIds/PlayerActorIdsAux custom property has changed!");
+        }
+        if (propertiesThatChanged.ContainsKey("PlayerToAttack")) {
+            print("[PlayerTurn] Room PlayerToAttack custom property has changed!");
+        }
+        if (propertiesThatChanged.ContainsKey("IndieniPlayed")) {
+            print("[PlayerTurn] Room IndieniPlayed custom property has changed!");
         }
     }
 
@@ -250,30 +280,31 @@ public class PlayerTurn : MonoBehaviourPunCallbacks
     {
         //base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
 
-        print("[OnPlayerPropertiesUpdate] YO Y OY OYO from PlayerTurn.");
+        //print("[OnPlayerPropertiesUpdate] YO Y OY OYO from PlayerTurn.");
         if (targetPlayer != null) {
-            print("[OnPlayerPropertiesUpdate] AHOI YO YO from PlayerTurn.");
+            //print("[OnPlayerPropertiesUpdate] AHOI YO YO from PlayerTurn.");
             if (changedProps.ContainsKey("Turn")) {
+                print("[PlayerTurn] Turn custom property has changed!");
                 //print("DAAAAAAAAAAAA11111111");
                 if (passTurn) {
                     if ((bool)PhotonNetwork.LocalPlayer.CustomProperties["Turn"]) {
                         activateTurnButton();
 
-                        print("-----------------");
-                        foreach (Player player in PhotonNetwork.PlayerList)
-                        {
-                            print("EEE111      " + player.NickName + "     " + player.ActorNumber + "         " + player.CustomProperties["Turn"]);
-                        }
+                        //print("-----------------");
+                        //foreach (Player player in PhotonNetwork.PlayerList)
+                        //{
+                        //    print("EEE111      " + player.NickName + "     " + player.ActorNumber + "         " + player.CustomProperties["Turn"]);
+                        //}
                     }
 
                     if (!(bool)PhotonNetwork.LocalPlayer.CustomProperties["Turn"]) {
                         deactivateTurnButton();
 
-                        print("-----------------");
-                        foreach (Player player in PhotonNetwork.PlayerList)
-                        {
-                            print("EEE222      " + player.NickName + "     " + player.ActorNumber + "         " + player.CustomProperties["Turn"]);
-                        }
+                        //print("-----------------");
+                        //foreach (Player player in PhotonNetwork.PlayerList)
+                        //{
+                        //    print("EEE222      " + player.NickName + "     " + player.ActorNumber + "         " + player.CustomProperties["Turn"]);
+                        //}
                     }
 
                     //if (targetPlayer == PhotonNetwork.LocalPlayer)

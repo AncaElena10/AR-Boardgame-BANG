@@ -15,19 +15,14 @@ public class CanAttack : MonoBehaviour
 
     public void Update()
     {
-        if (PlayerListing._canAttack_confirm)
-        {
-            if (PlayerListing._canAttack)
-            {
+        if (PlayerListing._canAttack_confirm) {
+            if (PlayerListing._canAttack) {
                 _HUDtext.text = "ENOUGH RANGE";
 
-            }
-            else
-            {
+            } else {
                 _HUDtext.text = "NOT ENOUGH RANGE";
             }
-        } else
-        {
+        } else {
             _HUDtext.text = "";
         }
     }

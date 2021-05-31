@@ -29,16 +29,16 @@ public class BackCard : MonoBehaviour
         if (mTrackableBehaviour.TrackableName.ToString() == CustomEnums.Stuff.BACK_CHAR.ToString() && mTrackableBehaviour.CurrentStatus.ToString() == "TRACKED" && mTrackableBehaviour.CurrentStatusInfo.ToString() == "NORMAL") {
             if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("Character")) {
                 if (PhotonNetwork.LocalPlayer.CustomProperties["Character"].ToString() == SHERIFF) {
-                    print("Secret card: Sheriff displayed.");
+                    print("[BackCard] Secret card: Sheriff displayed.");
                     sheriffModelToDisplay.SetActive(true);
                 } else if (PhotonNetwork.LocalPlayer.CustomProperties["Character"].ToString() == ADJUNCT) {
-                    print("Secret card: Adjunct displayed.");
+                    print("[BackCard] Secret card: Adjunct displayed.");
                     adjunctModelToDisplay.SetActive(true);
                 } else if (PhotonNetwork.LocalPlayer.CustomProperties["Character"].ToString() == RENEGATE) {
-                    print("Secret card: Renegate displayed.");
+                    print("[BackCard] Secret card: Renegate displayed.");
                     renegateModelToDisplay.SetActive(true);
                 } else if (PhotonNetwork.LocalPlayer.CustomProperties["Character"].ToString() == BANDIT) {
-                    print("Secret card: Bandit displayed.");
+                    print("[BackCard] Secret card: Bandit displayed.");
                     banditModelToDisplay.SetActive(true);
                 }
             }
@@ -88,16 +88,16 @@ public class BackCard : MonoBehaviour
         if (mTrackableBehaviour.TrackableName.ToString() == CustomEnums.Stuff.BACK_CHAR.ToString() && mTrackableBehaviour.CurrentStatus.ToString() == "NO_POSE" && mTrackableBehaviour.CurrentStatusInfo.ToString() == "UNKNOWN") {
             if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("Character")) {
                 if (PhotonNetwork.LocalPlayer.CustomProperties["Character"].ToString() == SHERIFF) {
-                    print("Secret card: Sheriff not displayed.");
+                    print("[BackCard] Secret card: Sheriff not displayed.");
                     sheriffModelToDisplay.SetActive(false);
                 } else if (PhotonNetwork.LocalPlayer.CustomProperties["Character"].ToString() == ADJUNCT) {
-                    print("Secret card: Adjunct not displayed.");
+                    print("[BackCard] Secret card: Adjunct not displayed.");
                     adjunctModelToDisplay.SetActive(false);
                 } else if (PhotonNetwork.LocalPlayer.CustomProperties["Character"].ToString() == RENEGATE) {
-                    print("Secret card: Renegate not displayed.");
+                    print("[BackCard] Secret card: Renegate not displayed.");
                     renegateModelToDisplay.SetActive(false);
                 } else if (PhotonNetwork.LocalPlayer.CustomProperties["Character"].ToString() == BANDIT) {
-                    print("Secret card: Bandit not displayed.");
+                    print("[BackCard] Secret card: Bandit not displayed.");
                     banditModelToDisplay.SetActive(false);
                 }
             }

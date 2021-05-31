@@ -3,6 +3,7 @@ using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using PunHashtable = ExitGames.Client.Photon.Hashtable;
 
 public class PlayerListingsMenu : MonoBehaviourPunCallbacks, IInRoomCallbacks
@@ -12,6 +13,9 @@ public class PlayerListingsMenu : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
     [SerializeField]
     private PlayerListing _playerListings;
+
+    [SerializeField]
+    private Text _playerName;
 
     private List<PlayerListing> _listings = new List<PlayerListing>();
 
@@ -34,9 +38,21 @@ public class PlayerListingsMenu : MonoBehaviourPunCallbacks, IInRoomCallbacks
         
     }
 
+    private void setPlayerName()
+    {
+        string playerName = _playerName.text;
+        print("LLLLLLLLLLLLLLLLLL " + playerName);
+        if (playerName != "") {
+            print("MMMMMMMMMMMMM");
+            PhotonNetwork.NickName = playerName;
+        }
+    }
+
     public override void OnEnable()
     {
         base.OnEnable();
+        print("BBBBBBBBBBBBBBBBBBBB");
+        setPlayerName();
         GetCurrentRoomPlayers();
     }
 
@@ -102,6 +118,10 @@ public class PlayerListingsMenu : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
         // add distances
         _distances.AddDistances(player);
+
+        // player to attack
+        roomCustomProperties.Add("PlayerToAttack", "");
+        PhotonNetwork.CurrentRoom.SetCustomProperties(roomCustomProperties);
     }
 
     public List<int> GetPlayerActorIds()
@@ -119,7 +139,10 @@ public class PlayerListingsMenu : MonoBehaviourPunCallbacks, IInRoomCallbacks
         //base.OnRoomPropertiesUpdate(propertiesThatChanged);
         if (propertiesThatChanged.ContainsKey("PlayerActorIds") || propertiesThatChanged.ContainsKey("PlayerActorIdsAux"))
         {
-            print("Room `PlayerActorIds`/`PlayerActorIdsAux` custom property changed! From PlayerListingMenu.");
+            print("[PlayerListingsMenu] Room PlayerActorIds/PlayerActorIdsAux custom property has changed!");
+        }
+        if (propertiesThatChanged.ContainsKey("PlayerToAttack")) {
+            print("[PlayerListingsMenu] Room PlayerToAttack custom property has changed!");
         }
     }
 

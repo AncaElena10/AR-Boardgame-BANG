@@ -24,7 +24,6 @@ public class CurrentTarget : MonoBehaviour
     {
         if (PlayerListing.player_to_attack != "") {
             _HUDtext.text = "CURRENT TARGET: " + PlayerListing.player_to_attack;
-
         }
     }
 

@@ -73,25 +73,20 @@ public class HUD : MonoBehaviourPunCallbacks
     {
         //base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
 
-        print("[OnPlayerPropertiesUpdate] YO Y OY OYO from HUD.");
-        if (targetPlayer != null && targetPlayer == PhotonNetwork.LocalPlayer)
-        {
-            print("[OnPlayerPropertiesUpdate] AHOI YO YO from HUD.");
-            if (changedProps.ContainsKey("Turn"))
-            {
-                print("Turn properties ADDED!");
-                if ((bool)PhotonNetwork.LocalPlayer.CustomProperties["Turn"])
-                {
-                    print("[OnPlayerPropertiesUpdate] You may start the game since you are the Sheriff.");
+        //print("[OnPlayerPropertiesUpdate] YO Y OY OYO from HUD.");
+        if (targetPlayer != null && targetPlayer == PhotonNetwork.LocalPlayer) {
+            //print("[OnPlayerPropertiesUpdate] AHOI YO YO from HUD.");
+            if (changedProps.ContainsKey("Turn")) {
+                print("[HUD] Turn custom property has changed!");
+                if ((bool)PhotonNetwork.LocalPlayer.CustomProperties["Turn"]) {
+                    print("[HUD] You may start the game since you are the Sheriff.");
                     endTurnButton.SetActive(true);
                     _playersToAttack_Panel.SetActive(true);
                     _attack_Text.SetActive(true);
                     _currentTarget_Text.SetActive(true);
                     _canAttack_Text.SetActive(true);
-                }
-                else
-                {
-                    print("[OnPlayerPropertiesUpdate] You can't start the game since you are not the Sheriff. Wait for your turn. ");
+                } else {
+                    print("[HUD] You can't start the game since you are not the Sheriff. Wait for your turn. ");
                     endTurnButton.SetActive(false);
                     _playersToAttack_Panel.SetActive(false);
                     _attack_Text.SetActive(false);

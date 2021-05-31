@@ -24,13 +24,11 @@ public class Mustang : MonoBehaviourPunCallbacks
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, PunHashtable changedProps)
     {
         //base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
-        print("[OnPlayerPropertiesUpdate] YO Y OY OYO from Mustang.");
-        if (targetPlayer != null)
-        {
-            print("[OnPlayerPropertiesUpdate] AHOI YO YO from Mustang.");
-            if (changedProps.ContainsKey("Mustang"))
-            {
-                print("[OnPlayerPropertiesUpdate] Mustang custom property has changed!");
+        //print("[OnPlayerPropertiesUpdate] YO Y OY OYO from Mustang.");
+        if (targetPlayer != null) {
+            //print("[OnPlayerPropertiesUpdate] AHOI YO YO from Mustang.");
+            if (changedProps.ContainsKey("Mustang")) {
+                print("[Mustang] Mustang custom property has changed!");
             }
         }
     }

@@ -41,12 +41,12 @@ public class CameraFocusController : MonoBehaviour
     {
         if (CameraDevice.Instance.SetFocusMode(CameraDevice.FocusMode.FOCUS_MODE_CONTINUOUSAUTO))
         {
-            Debug.Log("Autofocus set");
+            Debug.Log("[CameraFocusController] Autofocus set");
         }
         else
         {
             // never actually seen a device that doesn't support this, but just in case
-            Debug.Log("this device doesn't support auto focus");
+            Debug.Log("[CameraFocusController] This device doesn't support auto focus");
         }
     }
 }

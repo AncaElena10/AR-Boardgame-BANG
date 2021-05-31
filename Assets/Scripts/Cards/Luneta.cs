@@ -27,7 +27,7 @@ public class Luneta : MonoBehaviourPunCallbacks
 
             string playerDistances = (string)PhotonNetwork.LocalPlayer.CustomProperties[str];
 
-            print("OOOOOOOOO " + playerDistances);
+            //print("OOOOOOOOO " + playerDistances);
 
             List<int> playerDistances_list = stringToListOfInts(playerDistances);
 
@@ -43,7 +43,7 @@ public class Luneta : MonoBehaviourPunCallbacks
             // update the custo props with the new values
             string playerDistances_string = listOfIntsToString(playerDistances_list);
 
-            print("OOOOOOOOOOOOOOOO " + playerDistances_string);
+            //print("OOOOOOOOOOOOOOOO " + playerDistances_string);
 
             PunHashtable customProperties_distance = new PunHashtable();
             customProperties_distance.Add(str, playerDistances_string);
@@ -64,13 +64,9 @@ public class Luneta : MonoBehaviourPunCallbacks
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, PunHashtable changedProps)
     {
         //base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
-        print("[OnPlayerPropertiesUpdate] YO Y OY OYO from Luneta.");
-        if (targetPlayer != null)
-        {
-            print("[OnPlayerPropertiesUpdate] AHOI YO YO from Luneta.");
-            if (changedProps.ContainsKey("Luneta"))
-            {
-                print("[OnPlayerPropertiesUpdate] Luneta custom property has changed!");
+        if (targetPlayer != null) {
+            if (changedProps.ContainsKey("Luneta")) {
+                print("[Luneta] Luneta custom property has changed!");
             }
         }
     }

@@ -5,6 +5,7 @@ using Vuforia;
 
 public class Bullets : MonoBehaviour
 {
+    // this script is not valid anymore
     public PlayerLives _playerLives = new PlayerLives();
 
     public int readPlayerLivesFromBoard(int commonCounter, TrackableBehaviour mTrackableBehaviour)

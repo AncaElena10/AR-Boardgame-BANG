@@ -10,6 +10,9 @@ public class CreateRoomMenu : MonoBehaviourPunCallbacks
     [SerializeField]
     private Text _roomName;
 
+    [SerializeField]
+    private Text _playerName;
+
     private RoomsCanvases _roomsCanvases;
     public void FirstInitialize(RoomsCanvases canvases)
     {
@@ -28,17 +31,31 @@ public class CreateRoomMenu : MonoBehaviourPunCallbacks
         RoomOptions options = new RoomOptions();
         options.MaxPlayers = 7;
         options.BroadcastPropsChangeToAll = true; // broadcast changes
+
+        setPlayerName();
+
         PhotonNetwork.JoinOrCreateRoom(_roomName.text, options, TypedLobby.Default);
     }
 
     public override void OnCreatedRoom()
     {
-        print("Created room successfully!");
+        print("[CreateRoomMenu] Created room successfully!");
         _roomsCanvases.CurrentRoomCanvas.Show();
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
-        print("Room creation failed!");   
+        print("[CreateRoomMenu] Room creation failed!");   
+    }
+
+    private void setPlayerName()
+    {
+        print("da/!?!!?!?--------------");
+        string playerName = _playerName.text;
+        print("JJJJJJJJJJJJJJJJJJJJ " + playerName);
+        if (playerName != "") {
+            print("KKKKKKKKKKKKKKKKKKKKK");
+            PhotonNetwork.NickName = playerName;
+        }   
     }
 }

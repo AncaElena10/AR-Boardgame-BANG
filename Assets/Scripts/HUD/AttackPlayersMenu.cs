@@ -55,8 +55,7 @@ public class AttackPlayersMenu : MonoBehaviourPunCallbacks, IInRoomCallbacks
             //print("EEEEEEEEEEE " + playerInfo.Value);
 
             // display all the players except for the current player
-            if (playerInfo.Value.ActorNumber != PhotonNetwork.LocalPlayer.ActorNumber)
-            {
+            if (playerInfo.Value.ActorNumber != PhotonNetwork.LocalPlayer.ActorNumber) {
                 AddPlayerListing(playerInfo.Value);
             }
         }

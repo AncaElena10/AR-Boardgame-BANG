@@ -16,16 +16,16 @@ public class Characters : MonoBehaviour
 
         if (mTrackableBehaviour.TrackableName.ToString() == SHERIFF && foundCondition) {
             scannedCharacter = SHERIFF;
-            print("Scanned character: " + scannedCharacter);
+            print("[Character] Scanned character: " + scannedCharacter);
         } else if (mTrackableBehaviour.TrackableName.ToString() == ADJUNCT && foundCondition) {
             scannedCharacter = ADJUNCT;
-            print("Scanned character: " + scannedCharacter);
+            print("[Character] Scanned character: " + scannedCharacter);
         } else if (mTrackableBehaviour.TrackableName.ToString() == RENEGATE && foundCondition) {
             scannedCharacter = RENEGATE;
-            print("Scanned character: " + scannedCharacter);
+            print("[Character] Scanned character: " + scannedCharacter);
         } else if (mTrackableBehaviour.TrackableName.ToString() == BANDIT && foundCondition) {
             scannedCharacter = BANDIT;
-            print("Scanned character: " + scannedCharacter);
+            print("[Character] Scanned character: " + scannedCharacter);
         }
 
         return scannedCharacter;

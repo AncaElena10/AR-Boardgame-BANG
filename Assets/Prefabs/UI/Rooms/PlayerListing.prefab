@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 2815327780767821593}
-  player_listing_obj: {fileID: 0}
+  player_listing_obj: {fileID: 2815327780186838153}
 --- !u!1 &2815327780767821595
 GameObject:
   m_ObjectHideFlags: 0

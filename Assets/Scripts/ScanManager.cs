@@ -24,7 +24,7 @@ public class ScanManager : MonoBehaviourPunCallbacks
 
     public void SaveCharacter()
     {
-        Debug.Log("Character Saved! You've been assigned to " + MyDefaultTrackableEventHandler.scannedCharacter);
+        print("[ScanManager] Character Saved! You've been assigned to " + MyDefaultTrackableEventHandler.scannedCharacter);
 
         //foreach (PlayerListing player in _listings)
         //{

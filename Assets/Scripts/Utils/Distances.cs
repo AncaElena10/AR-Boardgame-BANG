@@ -105,24 +105,24 @@ public class Distances : MonoBehaviourPunCallbacks
     {
         //base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
         if (targetPlayer != null) {
-            print("[OnPlayerPropertiesUpdate] AHOI YO YO from PlayerListingMenu.");
+            //print("[Distances] AHOI YO YO from PlayerListingMenu.");
             if (changedProps.ContainsKey("Distance_2_players")) {
-                print("[OnPlayerPropertiesUpdate] Distances for 2 players updated.");
+                print("[Distances] Distance_2_players custom property has changed!");
             }
             if (changedProps.ContainsKey("Distance_3_players")) {
-                print("[OnPlayerPropertiesUpdate] Distances for 3 players updated.");
+                print("[Distances] Distance_3_players custom property has changed!");
             }
             if (changedProps.ContainsKey("Distance_4_players")) {
-                print("[OnPlayerPropertiesUpdate] Distances for 4 players updated.");
+                print("[Distances] Distance_4_players custom property has changed!");
             }
             if (changedProps.ContainsKey("Distance_5_players")) {
-                print("[OnPlayerPropertiesUpdate] Distances for 5 players updated.");
+                print("[Distances] Distance_5_players custom property has changed!");
             }
             if (changedProps.ContainsKey("Distance_6_players")) {
-                print("[OnPlayerPropertiesUpdate] Distances for 6 players updated.");
+                print("[Distances] Distance_6_players custom property has changed!");
             }
             if (changedProps.ContainsKey("Distance_7_players")) {
-                print("[OnPlayerPropertiesUpdate] Distances for 7 players updated.");
+                print("[Distances] Distance_7_players custom property has changed!");
             }
         }
     }

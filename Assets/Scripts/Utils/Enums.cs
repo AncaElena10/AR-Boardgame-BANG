@@ -21,7 +21,8 @@
     public enum LifeCards
     {
         BERE,
-        SALON
+        SALON,
+        INDIENI
     }
 
     public enum BangCards
@@ -64,5 +65,14 @@
         BULLET_LIFE_3,
         BULLET_LIFE_4,
         BULLET_LIFE_5,
+    }
+
+    public enum Characters
+    {
+        ROSE_DOOLAN,
+        PAUL_REGRET,
+        BART_CASSIDY,
+        EL_GRINGO,
+        WILLY_THE_KID
     }
 }

@@ -6,7 +6,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using PunHashtable = ExitGames.Client.Photon.Hashtable;
 
-public class Weapons : MonoBehaviour
+public class Weapons : MonoBehaviourPunCallbacks
 {
     private static string COLT = CustomEnums.WeaponCards.COLT.ToString();
     private static string VOLCANIC = CustomEnums.WeaponCards.VOLCANIC.ToString();
@@ -25,36 +25,69 @@ public class Weapons : MonoBehaviour
 
         if (mTrackableBehaviour.TrackableName.ToString() == COLT && foundCondition) {
             currentRange = 1;
-            print("Current range: " + currentRange);
+            print("[Weapons] Current range: " + currentRange);
             _playerRange.increaseRange(currentRange, "Weapons");
+
+            setHasVolcanicToFalse();
             //hasWeapon = true;
         } else if (mTrackableBehaviour.TrackableName.ToString() == VOLCANIC && foundCondition) {
             currentRange = 1;
-            print("Current range: " + currentRange);
+            print("[Weapons] Current range: " + currentRange);
             _playerRange.increaseRange(currentRange, "Weapons");
+
+            // set a custom property if this weapon is equiped so this player can have infinite BANGs for the near players
+            PunHashtable _volcanicCustomProperty = new PunHashtable();
+            _volcanicCustomProperty["HasVolcanic"] = true;
+            PhotonNetwork.LocalPlayer.SetCustomProperties(_volcanicCustomProperty);
+
             //hasWeapon = true;
         } else if (mTrackableBehaviour.TrackableName.ToString() == SCHOFIELD && foundCondition) {
             currentRange = 2;
-            print("Current range: " + currentRange);
+            print("[Weapons] Current range: " + currentRange);
             _playerRange.increaseRange(currentRange, "Weapons");
+
+            setHasVolcanicToFalse();
             //hasWeapon = true;
         } else if (mTrackableBehaviour.TrackableName.ToString() == REMINGTON && foundCondition) {
             currentRange = 3;
-            print("Current range: " + currentRange);
+            print("[Weapons] Current range: " + currentRange);
             _playerRange.increaseRange(currentRange, "Weapons");
+
+            setHasVolcanicToFalse();
             //hasWeapon = true;
         } else if (mTrackableBehaviour.TrackableName.ToString() == REV_CARABINE && foundCondition) {
             currentRange = 4;
-            print("Current range: " + currentRange);
+            print("[Weapons] Current range: " + currentRange);
             _playerRange.increaseRange(currentRange, "Weapons");
+
+            setHasVolcanicToFalse();
             //hasWeapon = true;
         } else if (mTrackableBehaviour.TrackableName.ToString() == WINCHESTER && foundCondition) {
             currentRange = 5;
-            print("Current range: " + currentRange);
+            print("[Weapons] Current range: " + currentRange);
             _playerRange.increaseRange(currentRange, "Weapons");
+
+            setHasVolcanicToFalse();
             //hasWeapon = true;
         }
 
         return currentRange;
+    }
+
+    public void setHasVolcanicToFalse()
+    {
+        PunHashtable _volcanicCustomProperty = new PunHashtable();
+        _volcanicCustomProperty["HasVolcanic"] = false;
+        PhotonNetwork.LocalPlayer.SetCustomProperties(_volcanicCustomProperty);
+    }
+
+    public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
+    {
+        //base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
+        if (targetPlayer != null && targetPlayer == PhotonNetwork.LocalPlayer) {
+            if (changedProps.ContainsKey("HasVolcanic")) {
+                print("[Weapons] HasVolcanic custom property has changed!");
+            }
+        }
     }
 }

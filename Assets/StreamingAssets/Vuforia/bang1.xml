@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="INDIENI" size="1.000000 1.539850" />
+    <ImageTarget name="LIFE_MARKER" size="1.000000 0.945312" />
+    <ImageTarget name="WILLY_THE_KID" size="1.000000 1.592535" />
+    <ImageTarget name="ROSE_DOOLAN" size="1.000000 1.597504" />
+    <ImageTarget name="PAUL_REGRET" size="1.000000 1.585139" />
+    <ImageTarget name="EL_GRINGO" size="1.000000 1.537538" />
+    <ImageTarget name="BART_CASSIDY" size="1.000000 1.546828" />
     <ImageTarget name="COLT" size="1.000000 1.620773" />
     <ImageTarget name="viataasfdads" size="1.000000 0.567294" />
     <ImageTarget name="BULLET_LIFE_5" size="1.000000 1.045894" />
