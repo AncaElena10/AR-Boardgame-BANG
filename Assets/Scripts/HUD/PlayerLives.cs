@@ -188,7 +188,7 @@ public class PlayerLives : MonoBehaviourPunCallbacks
     {
         _HUDtext_dontForget_Gringo.text = "You just lost a life point. Don't forget to draw a random card from the player who attacked you";
         yield return new WaitForSeconds(delay);
-        _HUDtext_dontForget_Gringo.text = "Y";
+        _HUDtext_dontForget_Gringo.text = "";
     }
 
     public void increaseLives(int lives, string fromWhere)
