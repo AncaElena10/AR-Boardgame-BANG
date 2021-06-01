@@ -73,10 +73,6 @@ public class Willy : MonoBehaviourPunCallbacks
 
                 customProperties.Add("PlayerMaxLives", livesNumber);
                 PhotonNetwork.LocalPlayer.SetCustomProperties(customProperties);
-
-                // special power - Luneta
-                customProperties.Add("Luneta", true);
-                PhotonNetwork.LocalPlayer.SetCustomProperties(customProperties);
             }
         }
     }
@@ -94,10 +90,6 @@ public class Willy : MonoBehaviourPunCallbacks
 
                 // send the number of lives to HUD
                 _playerLives.increaseLives(livesNumber, "Bullets");
-            }
-
-            if (changedProps.ContainsKey("Luneta")) {
-                print("[Willy] Luneta custom property has changed to true!");
             }
         }
     }

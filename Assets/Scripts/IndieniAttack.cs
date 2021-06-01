@@ -9,7 +9,7 @@ using PunHashtable = ExitGames.Client.Photon.Hashtable;
 
 public class IndieniAttack : MonoBehaviourPunCallbacks
 {
-    public Text _HUDtext_playBangCard;
+    //public Text _HUDtext_playBangCard;
     public Text _HUDtext_countdown;
     public float timeRemaining = 10;
     public GameObject playBangButton;
@@ -17,9 +17,14 @@ public class IndieniAttack : MonoBehaviourPunCallbacks
     private bool playerHitBang = false;
     private bool indieniPlayed = false;
 
+    [SerializeField]
+    GameObject _go;
+
     private bool displayHUD = false;
 
     public PlayerLives _playerLives = new PlayerLives();
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +34,7 @@ public class IndieniAttack : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
-        _HUDtext_playBangCard.text = "";
+        //_HUDtext_playBangCard.text = "";
         _HUDtext_countdown.text = "";
     }
 
@@ -123,16 +128,18 @@ public class IndieniAttack : MonoBehaviourPunCallbacks
 
     void enableUnderAttackText()
     {
-        _HUDtext_playBangCard.enabled = true;
-        _HUDtext_playBangCard.gameObject.SetActive(true);
-        _HUDtext_playBangCard.text = "INDIENI! Discard a BANG! card or lose one life point";
+        //_HUDtext_playBangCard.enabled = true;
+        //_HUDtext_playBangCard.gameObject.SetActive(true);
+        //_HUDtext_playBangCard.text = "INDIENI! Discard a BANG! card or lose one life point";
+        _go.SetActive(true);
     }
 
     void disableUnderAttackText()
     {
-        _HUDtext_playBangCard.enabled = false;
-        _HUDtext_playBangCard.gameObject.SetActive(false);
-        _HUDtext_playBangCard.text = "";
+        //_HUDtext_playBangCard.enabled = false;
+        //_HUDtext_playBangCard.gameObject.SetActive(false);
+        //_HUDtext_playBangCard.text = "";
+        _go.SetActive(false);
     }
 
     public void OnMouseDown()

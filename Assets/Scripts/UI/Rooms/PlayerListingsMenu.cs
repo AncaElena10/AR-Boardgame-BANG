@@ -14,8 +14,8 @@ public class PlayerListingsMenu : MonoBehaviourPunCallbacks, IInRoomCallbacks
     [SerializeField]
     private PlayerListing _playerListings;
 
-    [SerializeField]
-    private Text _playerName;
+    // [SerializeField]
+    // private Text _playerName;
 
     private List<PlayerListing> _listings = new List<PlayerListing>();
 
@@ -38,21 +38,26 @@ public class PlayerListingsMenu : MonoBehaviourPunCallbacks, IInRoomCallbacks
         
     }
 
-    private void setPlayerName()
-    {
-        string playerName = _playerName.text;
-        print("LLLLLLLLLLLLLLLLLL " + playerName);
-        if (playerName != "") {
-            print("MMMMMMMMMMMMM");
-            PhotonNetwork.NickName = playerName;
-        }
-    }
+    // private void setPlayerName()
+    // {
+    //     print("OOOOOOOOOOOOOOO2222222222222222");
+    //     string playerName = _playerName.text;
+    //     print("LLLLLLLLLLLLLLLLLL " + playerName);
+    //     if (playerName != "") {
+    //         print("MMMMMMMMMMMMM ");
+    //         PhotonNetwork.NickName = playerName;
+    //         PhotonNetwork.LocalPlayer.NickName = playerName;
+    //     }
+    // }
 
     public override void OnEnable()
     {
         base.OnEnable();
-        print("BBBBBBBBBBBBBBBBBBBB");
-        setPlayerName();
+
+        //setPlayerName();
+
+        //print("VVVVVVVVVVVVVV " + PhotonNetwork.NickName + "    " + PhotonNetwork.LocalPlayer.NickName);
+
         GetCurrentRoomPlayers();
     }
 
@@ -82,15 +87,19 @@ public class PlayerListingsMenu : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
     private void AddPlayerListing(Player player)
     {
+        //print("KKKKKKKKKKKKKKKKKK " + player);
         // if the list exists
         int index = _listings.FindIndex(x => x.Player == player);
         if (index != -1) {
+            //print("111111111111111111111111111");
             _listings[index].SetPlayerInfo(player);
         } else {
+            //print("2222222222222222222222222222");
             PlayerListing listing = Instantiate(_playerListings, _content);
 
             if (listing != null) {
-                listing.SetPlayerInfo(player);
+                //print("33333333333333333333333333333");
+                listing.SetPlayerInfo(player); // todo: vezi ce-i asta
                 _listings.Add(listing);
             }
         }
@@ -122,6 +131,11 @@ public class PlayerListingsMenu : MonoBehaviourPunCallbacks, IInRoomCallbacks
         // player to attack
         roomCustomProperties.Add("PlayerToAttack", "");
         PhotonNetwork.CurrentRoom.SetCustomProperties(roomCustomProperties);
+
+        //// set the player's range at the beginning
+        //PunHashtable playerCustomProperties = new PunHashtable();
+        //player.CustomProperties.Add("Range", 0);
+        //player.SetCustomProperties(playerCustomProperties);
     }
 
     public List<int> GetPlayerActorIds()
@@ -146,9 +160,30 @@ public class PlayerListingsMenu : MonoBehaviourPunCallbacks, IInRoomCallbacks
         }
     }
 
+    //public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
+    //{
+    //    //base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
+    //    if (targetPlayer != null && targetPlayer == PhotonNetwork.LocalPlayer) {
+    //        if (changedProps.ContainsKey("Range")) {
+    //            print("[PlayerListingsMenu] Range custom property has changed!");
+    //        }
+    //    }
+    //}
+
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
+        //print("DDDDDDDDDDDDDDDDDDD " + newPlayer);
+
+        // string playerName = _playerName.text;
+        // //print("LLLLLLLLLLLLLLLLLLxxxxxx " + playerName);
+        // if (playerName != "") {
+        //     //print("MMMMMMMMMMMMMxxxxxx ");
+        //     newPlayer.NickName = playerName;
+        // }
+
         AddPlayerListing(newPlayer);
+
+        //print("DDDDDDDDDDDDDDDDDDDxxxxxxxxxx " + newPlayer);
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)

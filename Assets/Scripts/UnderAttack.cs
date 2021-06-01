@@ -12,13 +12,16 @@ using PunHashtable = ExitGames.Client.Photon.Hashtable;
 public class UnderAttack : MonoBehaviourPunCallbacks
 {
     //string playerToAttack = "";
-    public Text _HUDtext_underAttack;
+    //public Text _HUDtext_underAttack;
     public Text _HUDtext_countdown;
     public float timeRemaining = 10;
     public GameObject playRatatButton;
 
     private bool displayHUD = false;
     private bool playerHitRatat = false;
+
+    [SerializeField]
+    GameObject _go;
 
     public PlayerLives _playerLives = new PlayerLives();
 
@@ -30,7 +33,7 @@ public class UnderAttack : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
-        _HUDtext_underAttack.text = "";
+        //_HUDtext_underAttack.text = "";
         _HUDtext_countdown.text = "";
     }
 
@@ -123,16 +126,18 @@ public class UnderAttack : MonoBehaviourPunCallbacks
 
     void enableUnderAttackText()
     {
-        _HUDtext_underAttack.enabled = true;
-        _HUDtext_underAttack.gameObject.SetActive(true);
-        _HUDtext_underAttack.text = "You are under attack";
+        //_HUDtext_underAttack.enabled = true;
+        //_HUDtext_underAttack.gameObject.SetActive(true);
+        //_HUDtext_underAttack.text = "You are under attack";
+        _go.SetActive(true);
     }
 
     void disableUnderAttackText()
     {
-        _HUDtext_underAttack.enabled = false;
-        _HUDtext_underAttack.gameObject.SetActive(false);
-        _HUDtext_underAttack.text = "";
+        //_HUDtext_underAttack.enabled = false;
+        //_HUDtext_underAttack.gameObject.SetActive(false);
+        //_HUDtext_underAttack.text = "";
+        _go.SetActive(false);
     }
 
     public void OnMouseDown()

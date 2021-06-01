@@ -49,8 +49,8 @@ public class NextTurn : MonoBehaviour
             else // if I am the first actor, then I need a special case - check if the last player has turn
             {
                 // if the last player has turn
-                if (playerList[PhotonNetwork.CountOfPlayers - 1].CustomProperties.ContainsKey("Turn")) {
-                    if ((bool)playerList[PhotonNetwork.CountOfPlayers - 1].CustomProperties["Turn"]) {
+                if (playerList[PhotonNetwork.CurrentRoom.PlayerCount - 1].CustomProperties.ContainsKey("Turn")) {
+                    if ((bool)playerList[PhotonNetwork.CurrentRoom.PlayerCount - 1].CustomProperties["Turn"]) {
                         //print("3333333333333");
                         yourTurnNext.SetActive(true);
                     } else {

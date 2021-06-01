@@ -7,8 +7,8 @@ using PunHashtable = ExitGames.Client.Photon.Hashtable;
 
 public class HUD : MonoBehaviourPunCallbacks
 {
-    [SerializeField]
-    public GameObject _hud;
+    //[SerializeField]
+    //public GameObject _hud;
 
     [SerializeField]
     public GameObject endTurnButton;
@@ -27,7 +27,7 @@ public class HUD : MonoBehaviourPunCallbacks
 
     public Player Player { get; private set; }
 
-    public SecretCharacter _secretChar = new SecretCharacter();
+    //public SecretCharacter _secretChar = new SecretCharacter();
     //public PlayerLives _playerLives = new PlayerLives();
 
     public void SaveCustomPropertiesAfterCharacterScan()
@@ -48,8 +48,10 @@ public class HUD : MonoBehaviourPunCallbacks
             //    }
             //}
             //result = MyDefaultTrackableEventHandler.scannedCharacter.ToString();
-            _hud.SetActive(true);
-            _secretChar.setCharacterHUD(MyDefaultTrackableEventHandler.scannedCharacter.ToString());
+
+            //_hud.SetActive(true);
+            //_secretChar.setCharacterHUD(MyDefaultTrackableEventHandler.scannedCharacter.ToString());
+
             //_playerLives.setLivesHUD(0);
         }
     }

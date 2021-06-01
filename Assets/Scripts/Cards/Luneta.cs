@@ -17,7 +17,7 @@ public class Luneta : MonoBehaviourPunCallbacks
     {
         bool condition = mTrackableBehaviour.TrackableName.ToString() == CustomEnums.DistanceCards.LUNETA.ToString() && mTrackableBehaviour.CurrentStatus.ToString() == "TRACKED" && mTrackableBehaviour.CurrentStatusInfo.ToString() == "NORMAL";
         if (condition) {
-            int playerNumber = PhotonNetwork.CountOfPlayers;
+            int playerNumber = PhotonNetwork.CurrentRoom.PlayerCount;
             string str = "Distance_" + playerNumber + "_players";
 
             // set cusom property ["Luneta"]=true
@@ -47,7 +47,8 @@ public class Luneta : MonoBehaviourPunCallbacks
 
             PunHashtable customProperties_distance = new PunHashtable();
             customProperties_distance.Add(str, playerDistances_string);
-            PhotonNetwork.LocalPlayer.CustomProperties = customProperties_distance;
+            //PhotonNetwork.LocalPlayer.CustomProperties = customProperties_distance; // todo - de ce asa?????????
+            PhotonNetwork.LocalPlayer.SetCustomProperties(customProperties_distance);
         }
     }
 

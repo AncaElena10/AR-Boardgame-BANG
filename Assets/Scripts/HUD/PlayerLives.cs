@@ -15,8 +15,12 @@ public class PlayerLives : MonoBehaviourPunCallbacks
 
     public Text _HUDtextLives;
     public Text _HUDtext_gameOver;
-    public Text _HUDtext_dontForget_Bart;
-    public Text _HUDtext_dontForget_Gringo;
+
+    [SerializeField]
+    private GameObject _HUDtext_dontForget_Bart;
+
+    [SerializeField]
+    private GameObject _HUDtext_dontForget_Gringo;
 
     //private GameManager gm = new GameManager();
 
@@ -39,8 +43,6 @@ public class PlayerLives : MonoBehaviourPunCallbacks
     {
         _HUDtextLives.text = "LIVES: " + lives.ToString();
         _HUDtext_gameOver.text = "";
-        _HUDtext_dontForget_Bart.text = "";
-        _HUDtext_dontForget_Gringo.text = "";
     }
 
     //public void setLivesHUDAtFirst(int result)
@@ -179,16 +181,16 @@ public class PlayerLives : MonoBehaviourPunCallbacks
 
     IEnumerator DisplayBartMessage(float delay)
     {
-        _HUDtext_dontForget_Bart.text = "You just lost a life point. Don't forget to draw a card from the deck";
+        _HUDtext_dontForget_Bart.SetActive(true);
         yield return new WaitForSeconds(delay);
-        _HUDtext_dontForget_Bart.text = "";
+        _HUDtext_dontForget_Bart.SetActive(false);
     }
 
     IEnumerator DisplayGringoMessage(float delay)
     {
-        _HUDtext_dontForget_Gringo.text = "You just lost a life point. Don't forget to draw a random card from the player who attacked you";
+        _HUDtext_dontForget_Gringo.SetActive(true);
         yield return new WaitForSeconds(delay);
-        _HUDtext_dontForget_Gringo.text = "";
+        _HUDtext_dontForget_Gringo.SetActive(false);
     }
 
     public void increaseLives(int lives, string fromWhere)

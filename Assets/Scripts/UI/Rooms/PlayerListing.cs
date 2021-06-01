@@ -49,6 +49,8 @@ public class PlayerListing : MonoBehaviourPunCallbacks
         //int result = (int) player.CustomProperties["RandomNumber"];
         //_text.text = result.ToString() + ", " + player.NickName;
 
+        //print("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOO " + player.NickName);
+
         _text.text = player.NickName;
 
         _player = player;
@@ -65,7 +67,7 @@ public class PlayerListing : MonoBehaviourPunCallbacks
 
     private void attackPlayer()
     {
-        int playersNumber = PhotonNetwork.CountOfPlayers;
+        int playersNumber = PhotonNetwork.CurrentRoom.PlayerCount;
         string str = "Distance_" + playersNumber + "_players";
 
         // print("KKKKKKK " + playersNumber);
@@ -86,13 +88,13 @@ public class PlayerListing : MonoBehaviourPunCallbacks
             print("JJJJJJJJ " + cntSamePlayer);
 
             // check the array is not already populated with the player you want to attack, because you can attack a player only once per turn
-            // TODO - treat special case - if VOLCANIC equiped => infinite BANGs
             if (cntSamePlayer > 1) { // already in the list, check if HasVolcanic  = true
                 print("1--------------1");
+                // treat special case - if VOLCANIC equiped => infinite BANGs
                 if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("HasVolcanic")) {
                     print("2--------------2");
                     if ((bool)PhotonNetwork.LocalPlayer.CustomProperties["HasVolcanic"] == true) {
-                        print("[PlayerListing] Attack that player again and again and again!!!");
+                        print("[PlayerListing] Attack that player again and again and again with VOLCANIC!!!");
 
                         // set as a custom property the player name , so he can be notified someone wants to attack him - nu uita sa pui inapoi ""
                         PunHashtable roomCustomProperties = new PunHashtable();
@@ -114,6 +116,18 @@ public class PlayerListing : MonoBehaviourPunCallbacks
                 PunHashtable roomCustomProperties = new PunHashtable();
                 roomCustomProperties.Add("PlayerToAttack", player_to_attack);
                 PhotonNetwork.CurrentRoom.SetCustomProperties(roomCustomProperties);
+            }
+
+            // player in range, check if Willy
+            if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("SpecialCharacter")) {
+                if ((string)PhotonNetwork.LocalPlayer.CustomProperties["SpecialCharacter"] == "Willy") {
+                    print("[PlayerListing] Attack that player again and again and again with WILLY!!!");
+
+                    // set as a custom property the player name , so he can be notified someone wants to attack him - nu uita sa pui inapoi ""
+                    PunHashtable roomCustomProperties = new PunHashtable();
+                    roomCustomProperties.Add("PlayerToAttack", player_to_attack);
+                    PhotonNetwork.CurrentRoom.SetCustomProperties(roomCustomProperties);
+                }
             }
 
             //print("da?!?!?");

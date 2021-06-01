@@ -158,7 +158,8 @@ public class PlayerRange : MonoBehaviourPunCallbacks
 
     private void changePlayerRangeArray(int range)
     {
-        int playerNumber = PhotonNetwork.CountOfPlayers;
+        int playerNumber = PhotonNetwork.CurrentRoom.PlayerCount;
+        print("LLLLLLLLL " + playerNumber);
         dealWith_x_players(range, playerNumber);
     }
 
@@ -170,9 +171,10 @@ public class PlayerRange : MonoBehaviourPunCallbacks
 
     private void substractRange(int scannedRange, string customProperty_string)
     {
+        print("KKKKKKKKKKKKKKKKKKK111111111111 " + customProperty_string);
         string currentRange = (string)PhotonNetwork.LocalPlayer.CustomProperties[customProperty_string];
 
-        //print("KKKKKKKKKKKKKKKKKKK11111111111 " + currentRange);
+        print("KKKKKKKKKKKKKKKKKKK2222222 " + currentRange);
 
         List<int> currentRange_list = stringToListOfInts(currentRange);
 
