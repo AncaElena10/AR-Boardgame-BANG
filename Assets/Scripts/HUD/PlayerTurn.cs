@@ -93,6 +93,9 @@ public class PlayerTurn : MonoBehaviourPunCallbacks
         // remove the attacked players from the array [PlayerListing] - TODO mai verifica asta
         _playerListing.AttackedPlayersList().Clear();
 
+        // set back to 0 - player can only BANG one time per turn
+        _playerListing.Cnt(0);
+
         // set PlayerToAttack to ""
         // set IndieniPlayed to false
         setPlayerToAttackToEmpty();

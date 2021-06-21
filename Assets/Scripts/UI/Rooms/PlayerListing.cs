@@ -24,7 +24,7 @@ public class PlayerListing : MonoBehaviourPunCallbacks
 
     public static bool _canAttack = false;
     public static bool _canAttack_confirm = false;
-    int cntSamePlayer = 0; // nu uita sa-l faci 0 la loc pe undeva
+    public static int cntSamePlayer = 0; // nu uita sa-l faci 0 la loc pe undeva
 
     public static List<string> attackedPlayersList;
 
@@ -76,14 +76,18 @@ public class PlayerListing : MonoBehaviourPunCallbacks
             if (player_to_attack != "") {
                 print("YUP!");
                 attackedPlayersList.Add(player_to_attack);
+
+                cntSamePlayer++;
             }
 
-            for (int i = 0; i < attackedPlayersList.Count(); i++) {
-                if (attackedPlayersList[i].ToString() == player_to_attack) {
-                    print("da?!?!?!");
-                    cntSamePlayer++;
-                }
-            }
+            //for (int i = 0; i < attackedPlayersList.Count(); i++) {
+            //    if (attackedPlayersList[i].ToString() == player_to_attack) {
+            //        print("da?!?!?!");
+            //        cntSamePlayer++;
+            //    }
+            //}
+
+            //cntSamePlayer++;
 
             print("JJJJJJJJ " + cntSamePlayer);
 
@@ -198,5 +202,10 @@ public class PlayerListing : MonoBehaviourPunCallbacks
     public List<string> AttackedPlayersList()
     {
         return attackedPlayersList;
+    }
+
+    public void Cnt(int value)
+    {
+        cntSamePlayer = value;
     }
 }
